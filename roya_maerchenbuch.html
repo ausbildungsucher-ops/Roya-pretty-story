@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roya und der Traum von der Freiheit · Ein A2-Märchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Quicksand:wght@500;600;700&family=Vazirmatn:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{
+    font-family:'Quicksand','Segoe UI',Tahoma,sans-serif;
+    background:#2a0d20;
+    -webkit-font-smoothing:antialiased;
+  }
+  section,header{display:block;position:relative;overflow:hidden}
+  .inner{max-width:46rem;margin:0 auto;padding:clamp(2.6rem,7vw,4.6rem) 1.4rem 3.4rem;position:relative;z-index:2}
+  .fa{font-family:'Vazirmatn',Tahoma,sans-serif;direction:rtl;unicode-bidi:isolate}
+  .chip{
+    display:inline-block;font:700 .68rem 'Quicksand',sans-serif;letter-spacing:.24em;
+    text-transform:uppercase;padding:.42rem 1.05rem;border-radius:999px;margin-bottom:1.1rem;
+  }
+  .subtitle{font-style:italic;opacity:.85;margin:.35rem 0 2.2rem}
+  h2.title{
+    font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;
+    font-size:clamp(2rem,5.4vw,3.2rem);line-height:1.08;margin-bottom:.4rem;
+  }
+  .story{font-size:1.13rem;line-height:1.85}
+  .story p{margin-top:1.05em}
+  .story p.first::first-letter{
+    float:left;font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;
+    font-size:3.6em;line-height:.82;padding:.06em .14em 0 0;
+  }
+  .orn{text-align:center;letter-spacing:.6em;opacity:.55;margin:1.9rem 0 .2rem;font-size:1.05rem}
+  .vocab{margin:2.4rem 0 0;padding:1.3rem 1.4rem 1.1rem;border-radius:14px}
+  .vocab .vt{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font:700 .72rem 'Quicksand',sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.85rem;
+  }
+  .vocab ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem}
+  .vocab li{display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .8rem;font-size:.95rem}
+  .vocab li b{font-weight:700}
+  .pagenum{text-align:center;font-size:.8rem;letter-spacing:.22em;opacity:.55;margin-top:2.6rem}
+  .nav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.9rem;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font:600 .95rem 'Quicksand',sans-serif;
+    padding:.62rem 1.25rem;border-radius:999px;transition:all .2s ease;
+  }
+
+  /* ============ COVER ============ */
+  .cover{
+    min-height:100vh;min-height:100svh;color:#f6e7cf;
+    background:radial-gradient(130% 90% at 50% -12%,#8d2d58 0%,#5b1231 55%,#3c0a21 100%);
+  }
+  .cover::before,.cover::after{
+    content:"✦";position:absolute;color:#d7b56d;font-size:1.2rem;top:2.2rem;left:2.2rem;z-index:0;
+  }
+  .cover::after{left:auto;right:2.2rem;top:auto;bottom:2.2rem}
+  .cover .inner{padding-top:clamp(3rem,9vw,5.5rem)}
+  .cover .frame{
+    border:1px solid rgba(215,181,109,.75);outline:1px solid rgba(215,181,109,.35);
+    outline-offset:7px;border-radius:4px;padding:clamp(1.8rem,5vw,3.4rem);text-align:center;position:relative;
+  }
+  .cover .mini{font:700 .7rem 'Quicksand',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#d7b56d}
+  .cover h1{
+    font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;
+    font-size:clamp(2.4rem,8vw,4.6rem);line-height:1.04;margin:1.1rem 0 .6rem;
+  }
+  .cover h1 .fa{font-size:.62em;color:#e9c98a}
+  .cover .dedic{font-family:'Caveat',cursive;font-size:1.55rem;color:#f3d9a4;margin:1.4rem 0 .2rem}
+  .cover .dedicnote{font-size:.98rem;opacity:.9;font-style:italic}
+  .cover .divider{color:#d7b56d;letter-spacing:.7em;margin:1.6rem 0;font-size:.9rem}
+  .toc{list-style:none;display:inline-block;text-align:left;margin-top:.4rem}
+  .toc li{margin:.5rem 0;font:500 1.02rem 'Quicksand',sans-serif}
+  .toc a{color:#f6e7cf;text-decoration:none;border-bottom:1px dotted rgba(215,181,109,.6);padding-bottom:2px}
+  .toc a:hover{color:#ffd98a;border-bottom-style:solid}
+  .toc b{color:#d7b56d;font-weight:700;margin-right:.5rem;font-size:.9rem}
+  .cover .hint{margin-top:2rem;font-family:'Caveat',cursive;font-size:1.4rem;color:#e9c98a;animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  .cover .if{font-size:.92rem;opacity:.8;margin-top:1.4rem}
+
+  /* ============ KAPITEL 1 · hartes Leben, Stein & Stahl ============ */
+  .ch1{min-height:100vh;min-height:100svh;color:#e2e6ee;
+    background:linear-gradient(180deg,#2f3542 0%,#252b37 55%,#1f242e 100%);}
+  .ch1 .hazard{position:absolute;top:0;left:0;right:0;height:22px;
+    background:repeating-linear-gradient(-45deg,rgba(255,124,138,.18) 0 14px,transparent 14px 28px);
+    border-bottom:1px solid rgba(255,124,138,.3);}
+  .ch1 .chip{background:rgba(0,0,0,.3);color:#ff9aa5;border:1px solid rgba(255,124,138,.45)}
+  .ch1 .subtitle{color:#9aa3b5}
+  .ch1 h2.title{color:#e8ebf2}
+  .ch1 .card{background:rgba(10,14,20,.38);border:1.5px solid rgba(198,208,222,.3);border-radius:12px;
+    padding:clamp(1.6rem,4.5vw,2.7rem)}
+  .ch1 .story{font-family:'Quicksand',sans-serif;font-size:1.12rem}
+  .ch1 .story p.first::first-letter{color:#ff9aa5}
+  .ch1 b{color:#ff9aa5}
+  .ch1 .orn{color:#7e8899}
+  .ch1 .quote{font-family:'Caveat',cursive;font-size:1.7rem;color:#ff9aa5;margin:1.4rem 0 .2rem;line-height:1.3}
+  .ch1 .bridge{font-family:'Caveat',cursive;font-size:1.9rem;color:#e8ebf2;text-align:center;margin-top:1.6rem}
+  .ch1 .vocab{background:rgba(0,0,0,.3);border:1px solid rgba(198,208,222,.35)}
+  .ch1 .vocab .vt{color:#c6d0de}
+  .ch1 .vocab li{border:1px solid rgba(198,208,222,.3);background:rgba(255,255,255,.04)}
+  .ch1 .btn{color:#c6d0de;border:1.5px solid rgba(198,208,222,.5)}
+  .ch1 .btn:hover{background:rgba(198,208,222,.12)}
+
+  /* ============ KAPITEL 2 · königlich, purpur & gold ============ */
+  .ch2{min-height:100vh;min-height:100svh;color:#f3ecdd;
+    background:linear-gradient(180deg,#3a1f5e 0%,#4b2a77 52%,#371d57 100%);}
+  .ch2::before{content:"";position:absolute;top:0;left:0;right:0;height:30px;
+    background:repeating-linear-gradient(90deg,rgba(215,181,109,.28) 0 42px,transparent 42px 74px);
+    border-bottom:2px solid rgba(215,181,109,.45);}
+  .ch2 .chip{background:rgba(215,181,109,.14);color:#e9c98a;border:1px solid rgba(215,181,109,.55)}
+  .ch2 .subtitle{color:#cfc3e6}
+  .ch2 .card{background:rgba(255,255,255,.045);border:1px solid rgba(215,181,109,.5);border-radius:6px;
+    padding:clamp(1.6rem,4.5vw,2.7rem);position:relative}
+  .ch2 .card::before{content:"";position:absolute;inset:9px;border:1px solid rgba(215,181,109,.28);border-radius:3px;pointer-events:none}
+  .ch2 .story{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.28rem;line-height:1.9}
+  .ch2 .story p.first::first-letter{color:#e9c98a}
+  .ch2 b{color:#f3d9a4}
+  .ch2 .orn{color:#d7b56d}
+  .ch2 .vocab{background:rgba(0,0,0,.22);border:1px solid rgba(215,181,109,.45)}
+  .ch2 .vocab .vt{color:#e9c98a}
+  .ch2 .vocab li{border:1px solid rgba(215,181,109,.4);background:rgba(255,255,255,.04)}
+  .ch2 .btn{color:#e9c98a;border:1.5px solid rgba(215,181,109,.6)}
+  .ch2 .btn:hover{background:rgba(215,181,109,.16)}
+
+  /* ============ KAPITEL 3 · Nacht, Sterne & Mond ============ */
+  .ch3{min-height:100vh;min-height:100svh;color:#e3e9ff;
+    background:#0d1738;
+    background-image:
+      radial-gradient(rgba(255,255,255,.85) 1px,transparent 1.8px),
+      radial-gradient(rgba(255,255,255,.38) 1px,transparent 1.7px),
+      radial-gradient(rgba(185,166,255,.4) 1.4px,transparent 2.2px);
+    background-size:120px 120px,72px 72px,160px 160px;
+    background-position:12px 8px,38px 46px,90px 30px;}
+  .ch3 .moon{z-index:0;pointer-events:none;position:absolute;top:2.1rem;right:8%;width:98px;height:98px;border-radius:50%;
+    background:radial-gradient(circle at 34% 34%,#fffbe8,#e9e2bf 58%,#cbc093);
+    box-shadow:0 0 70px 28px rgba(238,232,197,.22);}
+  .ch3 .chip{background:rgba(255,255,255,.07);color:#ffd98a;border:1px solid rgba(255,217,138,.5)}
+  .ch3 .subtitle{color:#b0b8e6}
+  .ch3 h2.title{text-shadow:0 2px 34px rgba(13,23,56,.9)}
+  .ch3 .story{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.3rem;line-height:1.9}
+  .ch3 .story p.first::first-letter{color:#ffd98a;font-style:normal}
+  .ch3 b{color:#ffd98a;font-style:normal}
+  .ch3 .orn{color:#8f97c9}
+  .ch3 .vocab{background:rgba(255,255,255,.055);border:1px dashed rgba(255,255,255,.35);border-radius:18px}
+  .ch3 .vocab .vt{color:#ffd98a}
+  .ch3 .vocab li{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.05)}
+  .ch3 .btn{color:#ffd98a;border:1.5px solid rgba(255,217,138,.5)}
+  .ch3 .btn:hover{background:rgba(255,217,138,.14)}
+
+  /* ============ KAPITEL 4 · Morgen, Reise & Wiese ============ */
+  .ch4{min-height:100vh;min-height:100svh;color:#22422b;
+    background:linear-gradient(180deg,#f0f8e8 0%,#dcf0d2 100%);}
+  .ch4 .chip{background:#eaf5df;color:#2f7d3a;border:1.5px solid #9cc79f}
+  .ch4 .subtitle{color:#5b7a5e}
+  .ch4 h2.title{font-family:'Caveat',cursive;font-weight:700;color:#2f7d3a}
+  .ch4 .paper{background:#fffef8;border:2px dashed #8bb98f;border-radius:20px;
+    padding:clamp(1.6rem,4.5vw,2.6rem);box-shadow:0 14px 34px rgba(60,110,70,.12)}
+  .ch4 .story{font-family:'Quicksand',sans-serif;font-size:1.12rem}
+  .ch4 .story p.first::first-letter{color:#2f7d3a}
+  .ch4 b{color:#2f7d3a}
+  .ch4 .orn{color:#7fae86}
+  .ch4 .quote{font-family:'Caveat',cursive;font-size:1.9rem;color:#2f7d3a;text-align:center;
+    margin:1.6rem 0 .4rem;line-height:1.25}
+  .ch4 .vocab{background:#eaf5df;border:1.5px solid #b7d6ba}
+  .ch4 .vocab .vt{color:#2f7d3a}
+  .ch4 .vocab li{border-radius:999px;border:1.5px solid #9cc79f;background:#fffef8}
+  .ch4 .btn{color:#2f7d3a;border:1.5px solid #7fae86}
+  .ch4 .btn:hover{background:#dcecd2}
+
+  /* ============ KAPITEL 5 · Volleyball, Halle & Abendlicht ============ */
+  .chv{min-height:100vh;min-height:100svh;color:#ffe9d6;
+    background:linear-gradient(180deg,#c2492e 0%,#8f2f1c 55%,#6d2214 100%);}
+  .chv .court{position:absolute;top:0;left:0;right:0;height:26px;
+    background:repeating-linear-gradient(90deg,rgba(255,232,200,.22) 0 3px,transparent 3px 26px,rgba(255,232,200,.22) 26px 29px,transparent 29px 70px);
+    border-bottom:1px solid rgba(255,232,200,.35);}
+  .chv .chip{background:rgba(0,0,0,.25);color:#ffd08a;border:1px solid rgba(255,208,138,.55)}
+  .chv .subtitle{color:#f3c4a6}
+  .chv h2.title{font-family:Quicksand,sans-serif;font-weight:700;color:#ffe9d6}
+  .chv .card{background:rgba(0,0,0,.24);border:1.5px solid rgba(255,208,138,.45);border-radius:14px;
+    padding:clamp(1.6rem,4.5vw,2.7rem)}
+  .chv .story{font-family:Quicksand,sans-serif;font-size:1.12rem}
+  .chv .story p.first::first-letter{color:#ffd08a}
+  .chv b{color:#ffd08a}
+  .chv .orn{color:#e8a06b}
+  .chv .quote{font-family:'Caveat',cursive;font-size:1.85rem;color:#ffd08a;margin:1.4rem 0 .2rem;text-align:center}
+  .chv .vocab{background:rgba(0,0,0,.26);border:1px solid rgba(255,208,138,.45)}
+  .chv .vocab .vt{color:#ffd08a}
+  .chv .vocab li{border:1px solid rgba(255,208,138,.4);background:rgba(255,255,255,.05)}
+  .chv .btn{color:#ffd08a;border:1.5px solid rgba(255,208,138,.55)}
+  .chv .btn:hover{background:rgba(255,208,138,.14)}
+
+  /* ============ KAPITEL 6 · Schulheft & warmes Licht ============ */
+  .ch5{min-height:100vh;min-height:100svh;color:#4a3218;
+    background:linear-gradient(180deg,#fdf3e0 0%,#f6e6c8 100%);}
+  .ch5 .chip{background:#fff7e8;color:#c96f2e;border:1.5px solid #e8b98a}
+  .ch5 .subtitle{color:#8a6a3e}
+  .ch5 h2.title{font-family:'Quicksand',sans-serif;font-weight:700;color:#c96f2e}
+  .ch5 .paper{background:#fffdf4;position:relative;border-radius:10px;
+    padding:clamp(1.7rem,4.5vw,2.8rem);
+    background-image:repeating-linear-gradient(transparent 0 30px,rgba(190,150,100,.28) 30px 31px);
+    box-shadow:0 16px 36px rgba(160,110,50,.16);}
+  .ch5 .paper::before{content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-2deg);
+    width:128px;height:27px;background:rgba(226,151,86,.32);border-radius:3px}
+  .ch5 .paper::after{content:"";position:absolute;top:0;bottom:0;left:2.4rem;width:1px;background:rgba(220,140,120,.5)}
+  .ch5 .story{font-family:'Quicksand',sans-serif;font-size:1.12rem;line-height:31px}
+  .ch5 .story p.first::first-letter{color:#c96f2e}
+  .ch5 b{color:#c96f2e}
+  .ch5 .orn{color:#dfaa6a}
+  .ch5 .vocab{background:#fff8ea;border:2px dashed #e8b98a;border-radius:12px}
+  .ch5 .vocab .vt{color:#c96f2e}
+  .ch5 .vocab li{border-radius:999px;border:1.5px dashed #dfaa6a;background:#fffdf4}
+  .ch5 .btn{color:#c96f2e;border:1.5px solid #dfaa6a}
+  .ch5 .btn:hover{background:#fbeed6}
+
+  /* ============ KAPITEL 7 · tiefer Garten & Goldsonne ============ */
+  .ch6{min-height:100vh;min-height:100svh;color:#f2ead6;
+    background:linear-gradient(180deg,#153830 0%,#1d4a3a 55%,#153830 100%);}
+  .ch6 .sun{z-index:0;pointer-events:none;position:absolute;top:1.1rem;right:1.4rem;
+    width:52px;height:52px;border-radius:50%;
+    background:radial-gradient(circle,#f2d98c,#e5c65c 62%,rgba(229,198,92,0));
+    box-shadow:0 0 60px 22px rgba(229,198,92,.25);}
+  .ch6 .chip{background:rgba(229,198,92,.12);color:#e9cf7f;border:1px solid rgba(229,198,92,.55)}
+  .ch6 .subtitle{color:#b9c9ae}
+  .ch6 .card{background:rgba(255,255,255,.05);border:1px solid rgba(229,198,92,.42);border-radius:8px;
+    padding:clamp(1.6rem,4.5vw,2.7rem)}
+  .ch6 .story{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.27rem;line-height:1.9}
+  .ch6 .story p.first::first-letter{color:#e9cf7f}
+  .ch6 b{color:#f2d98c}
+  .ch6 .orn{color:#cbb878}
+  .ch6 .quote{font-family:'Caveat',cursive;font-size:1.85rem;color:#f2d98c;margin:1.4rem 0 .2rem}
+  .ch6 .vocab{background:rgba(0,0,0,.24);border:1px solid rgba(229,198,92,.45)}
+  .ch6 .vocab .vt{color:#e9cf7f}
+  .ch6 .vocab li{border:1px solid rgba(229,198,92,.4);background:rgba(255,255,255,.04)}
+  .ch6 .btn{color:#e9cf7f;border:1.5px solid rgba(229,198,92,.55)}
+  .ch6 .btn:hover{background:rgba(229,198,92,.14)}
+
+  /* ============ KAPITEL 8 · Himmel, Wasser & Wellen ============ */
+  .ch7{min-height:100vh;min-height:100svh;color:#173a52;
+    background:linear-gradient(180deg,#e9f7ff 0%,#d3edff 58%,#c2e4fd 100%);}
+  .ch7 .chip{background:#ffffff;color:#1f7fb8;border:1.5px solid #a8d4ef}
+  .ch7 .subtitle{color:#4b7a96}
+  .ch7 h2.title{font-family:'Caveat',cursive;font-weight:700;color:#1f7fb8}
+  .ch7 .card{background:rgba(255,255,255,.68);border:1.5px solid #bfe3f5;border-radius:22px;
+    padding:clamp(1.6rem,4.5vw,2.6rem);box-shadow:0 16px 36px rgba(60,140,190,.14)}
+  .ch7 .story{font-family:'Quicksand',sans-serif;font-size:1.12rem}
+  .ch7 .story p.first::first-letter{color:#1f7fb8}
+  .ch7 b{color:#1f7fb8}
+  .ch7 .orn{color:#7db6d8}
+  .ch7 .vocab{background:#ffffff;border:1.5px solid #a8d4ef}
+  .ch7 .vocab .vt{color:#1f7fb8}
+  .ch7 .vocab li{border-radius:999px;border:1.5px solid #a8d4ef;background:#eef7fd}
+  .ch7 .wavebar{text-align:center;font-size:1.6rem;letter-spacing:.55em;color:rgba(31,127,184,.5);margin:1.6rem 0 0}
+  .ch7 .btn{color:#1f7fb8;border:1.5px solid #7db6d8}
+  .ch7 .btn:hover{background:#e2f2fc}
+
+  /* ============ KAPITEL 9 · Brief & Rose ============ */
+  .ch8{min-height:100vh;min-height:100svh;color:#5d3242;
+    background:linear-gradient(180deg,#fdf0f0 0%,#f7e2e4 100%);}
+  .ch8 .chip{background:#ffffff;color:#c05a72;border:1.5px solid #e5b3c0}
+  .ch8 .subtitle{color:#9c6a78}
+  .ch8 h2.title{font-style:italic;color:#b3556a}
+  .ch8 .card{background:#fffdfa;border:1.5px solid #e8c3cd;outline:1.5px solid rgba(226,183,196,.55);outline-offset:5px;border-radius:8px;
+    padding:clamp(1.7rem,4.5vw,2.8rem);position:relative;margin-top:1rem}
+  .ch8 .seal{position:absolute;top:-24px;left:50%;transform:translateX(-50%);
+    width:52px;height:52px;border-radius:50%;
+    background:radial-gradient(circle at 32% 30%,#f6b8c4,#c96a7f);
+    color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.4rem;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(201,106,127,.4);}
+  .ch8 .letter{font-family:'Caveat',cursive;font-size:1.42rem;line-height:1.5;color:#6d3a4a;
+    background:#fff8f6;border:1.5px dashed #e0aebc;border-radius:12px;padding:1.2rem 1.3rem;margin-top:1.2rem}
+  .ch8 .story{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem}
+  .ch8 .story p.first::first-letter{color:#b3556a}
+  .ch8 b{color:#b3556a}
+  .ch8 .orn{color:#cf8ea0}
+  .ch8 .vocab{background:#fdf2f4;border:1.5px solid #e8c3cd}
+  .ch8 .vocab .vt{color:#b3556a}
+  .ch8 .vocab li{border:1px solid #e8bcc6;background:#fff}
+  .ch8 .btn{color:#b3556a;border:1.5px solid #d99aa9}
+  .ch8 .btn:hover{background:#f9e7ea}
+
+  /* ============ KAPITEL 10 · goldener Sonnenaufgang ============ */
+  .ch9{min-height:100vh;min-height:100svh;color:#4a3617;
+    background:linear-gradient(180deg,#fff6e3 0%,#ffe9c4 55%,#ffdfae 100%);}
+  .ch9 .chip{background:#fff;color:#a8681f;border:1.5px solid #ecc78f}
+  .ch9 .subtitle{color:#8a6a3e}
+  .ch9 h2.title{color:#a8681f}
+  .ch9 .card{background:rgba(255,255,255,.72);border:1.5px solid #f0d9ad;border-radius:18px;
+    padding:clamp(1.6rem,4.5vw,2.6rem);box-shadow:0 16px 36px rgba(190,140,60,.18)}
+  .ch9 .story{font-family:'Quicksand',sans-serif;font-size:1.12rem}
+  .ch9 .story p.first::first-letter{color:#a8681f}
+  .ch9 b{color:#a8681f}
+  .ch9 .orn{color:#d9a95c}
+  .ch9 .moral{font-family:'Caveat',cursive;font-size:1.75rem;color:#a8681f;text-align:center;margin:1.5rem 0 .2rem;line-height:1.3}
+  .ch9 .vocab{background:#fff8ea;border:1.5px solid #ecc78f}
+  .ch9 .vocab .vt{color:#a8681f}
+  .ch9 .vocab li{border-radius:999px;border:1.5px solid #e2bd82;background:#fffdf4}
+  .ch9 .btn{color:#a8681f;border:1.5px solid #d9a95c}
+  .ch9 .btn:hover{background:#fdeecf}
+  .ch9 .ende{display:inline-block;margin:2rem 0 .4rem;padding:.75rem 1.8rem;border-radius:8px;
+    border:2px solid #a8681f;color:#a8681f;font:700 1.05rem 'Quicksand',sans-serif;letter-spacing:.32em;
+    transform:rotate(-4deg);background:#fff;}
+
+  /* ============ FUSS ============ */
+  .endpage{color:#f6e7cf;text-align:center;
+    background:radial-gradient(120% 120% at 50% 120%,#8d2d58 0%,#4b0f2b 60%,#31081c 100%);}
+  .endpage .inner{padding-top:2.6rem;padding-bottom:calc(2.6rem + env(safe-area-inset-bottom))}
+  .endpage p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.15rem;opacity:.95}
+  .endpage .l1{font-family:'Caveat',cursive;font-size:1.7rem;color:#f3d9a4;margin-bottom:.6rem}
+  .endpage a{color:#d7b56d;text-decoration:none;font:600 .9rem 'Quicksand',sans-serif;letter-spacing:.15em}
+
+  /* ============ MOBILE ============ */
+  @media (max-width:640px){
+    .inner{padding:clamp(1.7rem,5vw,4.6rem) 1.05rem 2.9rem}
+    h2.title{font-size:clamp(1.8rem,7vw,3.2rem)}
+    .subtitle{font-size:.98rem;margin-bottom:1.7rem}
+    .story{font-size:1.05rem;line-height:1.8}
+    .story p.first::first-letter{font-size:2.9em;line-height:.8;padding:.04em .1em 0 0}
+    .ch1 .story{font-size:1.06rem}
+    .ch2 .story{font-size:1.17rem}
+    .ch3 .story{font-size:1.17rem}
+    .ch4 .story{font-size:1.06rem}
+    .chv .story{font-size:1.06rem}
+    .ch5 .story{font-size:1.02rem;line-height:31px}
+    .ch6 .story{font-size:1.17rem}
+    .ch7 .story{font-size:1.06rem}
+    .ch8 .story{font-size:1.16rem}
+    .ch9 .story{font-size:1.06rem}
+    .quote{font-size:1.5rem}
+    .ch4 .quote{font-size:1.6rem}
+    .chv .quote{font-size:1.55rem}
+    .ch6 .quote{font-size:1.55rem}
+    .ch9 .moral{font-size:1.5rem}
+    .ch8 .letter{font-size:1.25rem}
+    .vocab{padding:1.05rem 1rem .95rem;margin-top:1.9rem}
+    .vocab ul{gap:.4rem}
+    .vocab li{font-size:.87rem;padding:.36rem .68rem}
+    .toc li{font-size:.94rem;margin:.42rem 0}
+    .cover .dedic{font-size:1.35rem}
+    .cover .dedicnote,.cover .if{font-size:.88rem}
+    .nav{gap:.55rem;margin-top:1.5rem}
+    .btn{padding:.72rem 1rem;font-size:.9rem;flex:1 1 calc(50% - .3rem);text-align:center}
+    .ch3 .moon{top:1.5rem;right:5%;width:74px;height:74px}
+    .ch6 .sun{width:44px;height:44px;top:.9rem;right:1rem}
+    .ch1 .hazard{height:16px}
+    .ch8 .seal{width:44px;height:44px;font-size:1.15rem;top:-19px}
+    .pagenum{margin-top:1.9rem}
+  }
+
+  /* ============ DRUCK / PDF ============ */
+  @media print{
+    html{scroll-behavior:auto}
+    section,header{min-height:auto !important}
+    .btn,.cover .hint{display:none !important}
+    .inner{max-width:100%}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<header class="cover" id="top">
+  <div class="inner">
+    <div class="frame">
+      <div class="mini">Ein A2-Märchen in zehn Kapiteln</div>
+      <h1>Roya und der Traum<br>von der Freiheit <span class="fa"></span></h1>
+      <div class="divider">❖ ❖ ❖</div>
+      <div class="dedic">Für meine liebe Roya</div>
+      <div class="dedicnote">Der Name „Roya“ bedeutet auf Farsi <span class="fa" lang="fa">رویا</span>  „Traum“.</div>
+      <div class="divider">✦</div>
+      <ul class="toc">
+        <li><b>K1</b><a href="#k1">Der geheime Salon</a></li>
+        <li><b>K2</b><a href="#k2">Die Warnung</a></li>
+        <li><b>K3</b><a href="#k3">Die Nacht über den Bergen</a></li>
+        <li><b>K4</b><a href="#k4">Die Reise nach Deutschland</a></li>
+        <li><b>K5</b><a href="#k5">Der verletzte Zeh</a></li>
+        <li><b>K6</b><a href="#k6">Die Ausbildung in Deutschland</a></li>
+        <li><b>K7</b><a href="#k7">Das Haus am Fluss</a></li>
+        <li><b>K8</b><a href="#k8">Der hübsche See</a></li>
+        <li><b>K9</b><a href="#k9">Der Brief nach Hause</a></li>
+        <li><b>K10</b><a href="#k10">Der offene Salon</a></li>
+      </ul>
+      <div class="hint">▾ lese weiter ▾</div>
+      <div class="if">roya is the cutest prettiest and most hardworking person everrrrr<span class="fa" lang="fa"></span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== KAPITEL 1 · DAS HARTE LEBEN ==================== -->
+<section class="ch ch1" id="k1">
+  <div class="hazard"></div>
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 1 · Seite 1</span>
+      <h2 class="title">Der geheime Salon</h2>
+      <p class="subtitle">Von heimlicher Arbeit, von Angst und Mut — und vom Anfang eines Traums.</p>
+
+      <div class="story">
+        <p class="first">In einem fernen Land, hoch in den Bergen des Ostens, lebte eine junge Frau. Ihr Name war Roya, und sie hatte die schönsten grünen Augen. Aber in ihrem Land waren Augen nicht wichtig. In ihrem Land hatten nur die Männer etwas zu sagen. Die Männer, die das Land <b>regierten</b>, hatten viele, viele <b>Regeln</b> — und die Regeln waren sehr streng und sehr religiös.</p>
+
+        <p>Die Männer sagten: „Unsere Regeln sind heilig. Frauen müssen gehorchen.“ Frauen durften nicht allein durch die Stadt gehen. Frauen mussten immer ein <b>Kopftuch</b> tragen, auch im Sommer. Frauen durften nicht laut lachen, nicht singen, nicht tanzen. Und Frauen durften nicht zeigen, wer sie sind. Für diese Männer waren die Regeln wichtiger als die Menschen. Sie benutzten die Religion wie ein Schloss — um Frauen festzuhalten.</p>
+
+        <p>Aber Roya hatte ein Geheimnis: Sie war <b>Friseurin</b> — eine <b>heimliche</b> Friseurin. In einem kleinen, versteckten Raum durften die Frauen ihr Kopftuch abnehmen. Roya wusch ihr Haar, kämmte es und schnitt es mit ihrer <b>Schere</b> — immer schön, immer mit Liebe. Die Frauen lachten leise und fühlten sich frei, wenigstens für eine Stunde.</p>
+
+        <p>Die Frauen sagten: „Roya, deine Hände sind gut. Wenn du unser Haar schneidest, vergessen wir die <b>Angst</b>.“</p>
+
+        <p>Aber die Arbeit von Roya war verboten — und <b>gefährlich</b>. Die regierenden Männer hatten Helfer auf den Straßen. Die Helfer kontrollierten die Frauen: Trägt sie das Kopftuch richtig? Ist sie allein? Ist sie brav? Wer gegen die Regeln lebte, musste Geld zahlen oder kam ins Gefängnis. Roya aber arbeitete gegen die Regeln. Wenn die Männer sie fanden, war ihr Leben in großer <b>Gefahr</b>.</p>
+
+        <div class="orn">▲ ▲ ▲</div>
+
+        <p>Eines Nachmittags kamen die Helfer in Royas Straße. Schnell versteckten sich die Frauen. Roya versteckte die Scheren in einer Tasche und machte das Licht aus. Dann war es still — sehr still. Roya hörte nur ihr eigenes Herz. Nach einer langen Stunde waren die Helfer endlich weg. Roya atmete tief. Alle Frauen waren sicher.</p>
+
+        <p>In dieser Nacht konnte Roya nicht schlafen. Sie hielt ihre Schere in der Hand und dachte: „Warum darf eine Frau nicht frei über ihr eigenes Haar entscheiden? Warum sind die Regeln der Männer wichtiger als die Menschen?“ Ihre grünen Augen waren wütend und traurig zugleich.</p>
+
+        <div class="quote">Ich will in ein Land, wo ich offen arbeiten darf — als Frau, als Friseurin, als ich selbst. Ich will frei sein.</div>
+
+        <p>Dieser Gedanke wurde immer lauter in Royas Herz. Ihre grünen Augen schauten in die dunkle Nacht — nach Westen, weit über die Berge.</p>
+
+        <p class="bridge">Aber Geheimnisse bleiben nie lange Geheimnisse …</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 1</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>der Salon</b> <span class="fa" lang="fa">آرایشگاه</span></li>
+          <li><b>die Friseurin</b> <span class="fa" lang="fa">آرایشگر</span></li>
+          <li><b>die Schere</b> <span class="fa" lang="fa">قیچی</span></li>
+          <li><b>heimlich</b> <span class="fa" lang="fa">مخفیانه</span></li>
+          <li><b>das Kopftuch</b> <span class="fa" lang="fa">روسری</span></li>
+          <li><b>die Regeln</b> <span class="fa" lang="fa">قوانین</span></li>
+          <li><b>regieren</b> <span class="fa" lang="fa">حکومت کردن</span></li>
+          <li><b>gefährlich</b> <span class="fa" lang="fa">خطرناک</span></li>
+          <li><b>die Angst</b> <span class="fa" lang="fa">ترس</span></li>
+          <li><b>die Freiheit</b> <span class="fa" lang="fa">آزادی</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 1 · Kapitel 1 —</div>
+      <nav class="nav">
+        <span></span>
+        <a class="btn" href="#k2">Weiter zu Kapitel 2 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 2 · DAS SCHLOSS ==================== -->
+<section class="ch ch2" id="k2">
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 2 · Seite 2</span>
+      <h2 class="title">Die Warnung</h2>
+      <p class="subtitle">Von einer Freundin mit Angst in den Augen — und von einer mutigen Entscheidung.</p>
+
+      <div class="story">
+        <p class="first">An einem Donnerstagabend klopfte es leise an Royas Tür. Draußen stand eine gute <b>Freundin</b> — und sie hatte Angst in den Augen. Sie flüsterte schnell: „Roya, eine <b>Warnung</b>: Die Helfer wissen von deinem Salon. Sie kommen bald. Du bist in großer Gefahr!“</p>
+
+        <p>Roya saß nicht lange still. Roya war <b>mutig</b>, und Roya war stark. Sie dachte schnell und klar: „Dann muss ich <b>fliehen</b>. Wenn ich bleibe, nehmen sie mir alles: meinen Salon und meine Freiheit.“</p>
+
+        <p>In derselben Nacht <b>packte</b> Roya ihren kleinen <b>Koffer</b>: Kleidung, wichtige Papiere und zehn Walnüsse — ihre Lieblingsnüsse, die packte sie auf jeden Fall mit! Nur eine Sache blieb im Salon: ihre gute <b>Schere</b>. „<b>Lasst</b> sie hier“, sagte Roya zu den Frauen. „Bis wir uns wiedersehen.“</p>
+
+        <div class="orn">❖ ❖ ❖</div>
+
+        <p>Am Morgen, vor dem ersten Licht, ging Roya zur versteckten Tür. Sie schaute nur einen kurzen Moment zurück — auf ihre <b>Heimat</b>. Dann lief sie mit schnellen Schritten los, ohne sich umzudrehen. Denn Roya wusste ganz genau, was sie wollte:</p>
+
+        <div class="quote">Ich komme zurück — als freie Frau.</div>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 2</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>die Warnung</b> <span class="fa" lang="fa">هشدار</span></li>
+          <li><b>die Freundin</b> <span class="fa" lang="fa">دوست</span></li>
+          <li><b>fliehen</b> <span class="fa" lang="fa">فرار کردن</span></li>
+          <li><b>mutig</b> <span class="fa" lang="fa">شجاع</span></li>
+          <li><b>die Heimat</b> <span class="fa" lang="fa">سرزمین مادری</span></li>
+          <li><b>packen</b> <span class="fa" lang="fa">بسته‌بندی کردن</span></li>
+          <li><b>der Koffer</b> <span class="fa" lang="fa">چمدان</span></li>
+          <li><b>lassen</b> <span class="fa" lang="fa">به جا گذاشتن</span></li>
+          <li><b>die Schere</b> <span class="fa" lang="fa">قیچی</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 2 · Kapitel 2 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k1">← Kapitel 1</a>
+        <a class="btn" href="#k3">Weiter zu Kapitel 3 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 3 · DER TRAUM IN DER NACHT ==================== -->
+<section class="ch ch3" id="k3">
+  <div class="moon"></div>
+  <div class="inner">
+    <span class="chip">Kapitel 3 · Seite 3</span>
+    <h2 class="title">Die Nacht über den Bergen</h2>
+    <p class="subtitle">Eine Busfahrt in der Dunkelheit — und Sterne, die mitgehen.</p>
+
+    <div class="story">
+      <p class="first">Um zwei Uhr nachts stand Roya auf einer großen Straße vor der Stadt. Ein alter <b>Bus</b> wartete im Dunkeln. Der <b>Fahrer</b> sprach ganz leise: „Keine Namen. Keine Fragen. Steig ein — schnell.“</p>
+
+      <p>Im Bus saßen noch andere Menschen: Frauen mit Kopftüchern, Männer mit müden Augen, ein Kind, das schlief. Alle wollten dasselbe: weg. Alle hatten Angst, und niemand sprach. Roya hielt ihren Koffer fest. Dann aß sie langsam eine Walnuss. Tük, tük. Sie schmeckte wie ihre <b>Heimat</b>.</p>
+
+      <p>Der Bus fuhr die ganze <b>Nacht</b> durch die hohen Berge. Roya schaute aus dem Fenster. Der Himmel war dunkel und voller <b>Sterne</b> — und die Sterne gingen mit ihr mit, Schritt für Schritt.</p>
+
+      <div class="orn">✦ ✦ ✦</div>
+
+      <p>Am Morgen hielt der Bus an der <b>Grenze</b>. Das war der schlimmste Moment. Zwei Männer in Uniform kamen in den Bus und sahen jeden genau an. Roya schaute auf ihre Hände und atmete langsam. Der Fahrer sprach mit den Männern. Eine Minute. Zwei Minuten. Drei Minuten — die längsten Minuten von Royas Leben. Dann stiegen die Männer aus. Der Bus fuhr weiter.</p>
+
+      <p>Am zweiten Tag stieg Roya in einen <b>Zug</b> um. Der Zug fuhr nach <b>Westen</b>, durch viele Länder. Roya hatte von einem Land geträumt, wo Frauen arbeiten, lernen und laut lachen dürfen: <b>Deutschland</b>. Jetzt fuhr sie genau dorthin.</p>
+
+      <p>Im Zug saß Roya am Fenster und weinte ein bisschen — vor Müdigkeit und Glück zugleich. Sie aß noch eine Walnuss aus dem Koffer. Dann schlief sie tief und fest, zum ersten Mal seit vielen Tagen. Ihre <b>Hoffnung</b> reiste mit ihr mit.</p>
+
+      <div class="quote">Deutschland, ich komme!</div>
+    </div>
+
+    <div class="vocab">
+      <div class="vt"><span>Wortschatz · Kapitel 3</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+      <ul>
+        <li><b>die Nacht</b> <span class="fa" lang="fa">شب</span></li>
+        <li><b>der Stern</b> <span class="fa" lang="fa">ستاره</span></li>
+        <li><b>der Bus</b> <span class="fa" lang="fa">اتوبوس</span></li>
+        <li><b>der Fahrer</b> <span class="fa" lang="fa">راننده</span></li>
+        <li><b>die Grenze</b> <span class="fa" lang="fa">مرز</span></li>
+        <li><b>der Zug</b> <span class="fa" lang="fa">قطار</span></li>
+        <li><b>der Westen</b> <span class="fa" lang="fa">غرب</span></li>
+        <li><b>die Hoffnung</b> <span class="fa" lang="fa">امید</span></li>
+      </ul>
+    </div>
+
+    <div class="pagenum">— Seite 3 · Kapitel 3 —</div>
+    <nav class="nav">
+      <a class="btn" href="#k2">← Kapitel 2</a>
+      <a class="btn" href="#k4">Weiter zu Kapitel 4 →</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 4 · DER MUT UND DIE TÜR ==================== -->
+<section class="ch ch4" id="k4">
+  <div class="inner">
+    <div class="paper">
+      <span class="chip">Kapitel 4 · Seite 4</span>
+      <h2 class="title">Die Reise nach Deutschland</h2>
+      <p class="subtitle">Ein neues Land, eine neue Sprache — und Türen, die offen sind.</p>
+
+      <div class="story">
+        <p class="first">Nach drei Tagen hielt der <b>Zug</b> in einer großen, schönen Stadt. Roya nahm ihren <b>Koffer</b> und stieg aus. Der <b>Bahnhof</b> war riesig, und überall sprachen die Menschen eine <b>Sprache</b>, die sie nicht verstand. Die <b>Reise</b> war vorbei — ihr neues Leben begann.</p>
+
+        <p>Neben dem Gleis stand ein großes <b>Schild</b>. Darauf stand: „Willkommen in Deutschland!“ Roya las die Wörter langsam laut vor. Willkommen. „Das Wort klingt wie eine <b>Umarmung</b>“, dachte sie.</p>
+
+        <p>Die ersten Wochen waren schwer. Das Essen war neu, die Menschen waren <b>fremd</b>, und manche Wörter waren sehr lang. Aber Roya war mutig. Sie lernte jeden Tag neue Wörter, wie andere Menschen Süßigkeiten essen: eine nach der anderen.</p>
+
+        <div class="orn">❧ ❧ ❧</div>
+
+        <p>Roya ging jeden Tag durch die Stadt. Sie ging durch viele <b>Türen</b> — große Türen, kleine Türen, gläserne Türen — und keine Tür war verschlossen! Das war für Roya ein kleines Wunder.</p>
+
+        <p>Und dann sah sie die Frauen: Frauen mit offenen Haaren im Wind. Frauen, die allein Kaffee tranken und Bücher lasen. Frauen, die laut lachten. Roya blieb oft stehen und lächelte. <i>Hier</i>, dachte sie, <i>ist mein neues Zuhause.</i></p>
+
+        <div class="quote">Ich bin frei! Ich bin wirklich frei!</div>
+
+        <p>In ihrem alten Salon hatte Roya mit den Händen gearbeitet, und ihre Hände hatten den Frauen gutgetan. In Deutschland lernte sie einen neuen Beruf kennen: <b>Physiotherapie</b>. „Das ist mein Weg“, sagte Roya. „Ich will eine Ausbildung machen. Ich will Physiotherapeutin werden. Meine Hände können hier helfen — ohne Angst, ohne Geheimnis.“</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 4</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>die Reise</b> <span class="fa" lang="fa">سفر</span></li>
+          <li><b>der Koffer</b> <span class="fa" lang="fa">چمدان</span></li>
+          <li><b>der Bahnhof</b> <span class="fa" lang="fa">ایستگاه قطار</span></li>
+          <li><b>die Sprache</b> <span class="fa" lang="fa">زبان</span></li>
+          <li><b>das Schild</b> <span class="fa" lang="fa">تابلو</span></li>
+          <li><b>fremd</b> <span class="fa" lang="fa">ناآشنا</span></li>
+          <li><b>die Umarmung</b> <span class="fa" lang="fa">در آغوش گرفتن</span></li>
+          <li><b>die Tür</b> <span class="fa" lang="fa">در</span></li>
+          <li><b>willkommen</b> <span class="fa" lang="fa">خوش‌آمدی</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 4 · Kapitel 4 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k3">← Kapitel 3</a>
+        <a class="btn" href="#k5">Weiter zu Kapitel 5 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 5 · DER VERLETZTE ZEH ==================== -->
+<section class="ch chv" id="k5">
+  <div class="court"></div>
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 5 · Seite 5</span>
+      <h2 class="title">Der verletzte Zeh</h2>
+      <p class="subtitle">Von Volleyball, einem blauen Zeh — und von Geduld.</p>
+
+      <div class="story">
+        <p class="first">Deutschland wurde schnell wie ein zweites Zuhause für Roya. Sie arbeitete, sie lernte und sie lachte viel. Und sie fand etwas ganz Neues: <b>Volleyball</b>! In einem Verein in der Stadt spielte Roya jetzt jede Woche Volleyball — mit vielen <b>Frauen</b>, in einer großen Halle. Roya war nicht die beste Spielerin, aber sie war die fleißigste: Sie übte jeden Samstag Aufschläge und Sprünge, und der Ball flog höher und höher.</p>
+
+        <p>Dann, an einem Abend im Training: Der Ball kam sehr hoch. Roya lief, sprang und schlug — Punkt! Aber beim Landen knickte ihr großer <b>Zeh</b> weg. Autsch! Roya saß auf dem Boden und hielt sich den <b>Fuß</b>. Der Zeh war <b>verletzt</b> — schnell wurde er dick und blau.</p>
+
+        <p>Roya konnte nicht mehr richtig <b>laufen</b>. Jeder Schritt tat weh, und sie humpelte nach Hause. Zu Hause saß sie am Fenster und war traurig: kein Volleyball, kein Spaziergang, kein schnelles Gehen. Das war schwer für Roya — sie war doch immer in Bewegung!</p>
+
+        <p>Am nächsten Tag ging Roya in eine Praxis für <b>Physiotherapie</b>. Eine <b>Physiotherapeutin</b> schaute sich den Zeh genau an, drückte vorsichtig und sagte dann beruhigend: „Keine Angst. Der Zeh heilt gut. Aber du brauchst Ruhe und Übungen — und ganz viel <b>Geduld</b>.“</p>
+
+        <div class="orn">● ● ●</div>
+
+        <p>Die <b>Übungen</b> waren einfach: Zehen bewegen, den Fuß heben und senken — zehn Mal am Tag. Aber Roya wollte sofort wieder spielen! Die Physiotherapeutin lächelte: „Geduld. Ein Zeh ist klein — und trotzdem sehr wichtig. Jeden Tag ein bisschen, dann geht es wieder.“</p>
+
+        <p>Also übte Roya jeden Tag. Und jeden Abend knackte sie eine Walnuss. Tük, tük. Das war ihr kleines Fest für den Fuß. Nach drei Wochen ging sie wieder: erst ganz langsam, dann schneller, dann ohne Schmerzen. Nach sechs Wochen spielte sie wieder Volleyball. Ihr erster Aufschlag war vielleicht nicht perfekt — aber sie war wieder im Spiel!</p>
+
+        <p>In diesen Wochen sah Roya jeden Tag etwas Wichtiges: Die Physiotherapeutin half Menschen — mit Händen, mit Übungen und mit Geduld. Roya schaute auf ihre eigenen Hände und lächelte. Sie wusste jetzt ganz genau, was sie wollte: <i>Ich will auch helfen können. Ich will Physiotherapeutin werden!</i></p>
+
+        <div class="quote">Geduld — und alles wird wieder gut.</div>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 5</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>Volleyball</b> <span class="fa" lang="fa">والیبال</span></li>
+          <li><b>der Zeh</b> <span class="fa" lang="fa">انگشت پا</span></li>
+          <li><b>verletzt</b> <span class="fa" lang="fa">آسیب‌دیده</span></li>
+          <li><b>der Fuß</b> <span class="fa" lang="fa">پا</span></li>
+          <li><b>die Physiotherapie</b> <span class="fa" lang="fa">فیزیوتراپی</span></li>
+          <li><b>die Hand</b> <span class="fa" lang="fa">دست</span></li>
+          <li><b>geduldig</b> <span class="fa" lang="fa">صبور</span></li>
+          <li><b>laufen</b> <span class="fa" lang="fa">راه رفتن</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 5 · Kapitel 5 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k4">← Kapitel 4</a>
+        <a class="btn" href="#k6">Weiter zu Kapitel 6 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 6 · DIE AUSBILDUNG ==================== -->
+<section class="ch ch5" id="k6">
+  <div class="inner">
+    <div class="paper">
+      <span class="chip">Kapitel 6 · Seite 6</span>
+      <h2 class="title">Die Ausbildung in Deutschland</h2>
+      <p class="subtitle">Drei Jahre Arbeit, drei Jahre Lernen — und ein Traum, der stärker ist als Müdigkeit.</p>
+
+      <div class="story">
+        <p class="first">Roya hatte einen Plan: Sie wollte Physiotherapeutin werden! Aber zuerst kam die Sprache. Roya ging jeden Morgen zum Deutschkurs und schrieb neue Wörter auf kleine Karten. Am Abend las sie die Karten laut vor und hörte deutsches Radio. Das war nicht leicht — aber Roya war <b>mutig</b> und <b>geduldig</b>. Sie lernte die Wörter wie andere Menschen Süßigkeiten essen: eine nach der anderen. Und nach einem Jahr sprach sie schon gut Deutsch.</p>
+
+        <p>Dann war es so weit. Roya sagte: „Ich will in <b>Deutschland</b> eine <b>Ausbildung</b> machen. Ich will Physiotherapeutin werden — und ich arbeite dafür mit all meiner Kraft.“</p>
+
+        <p>„Was ist eine Ausbildung?“, fragte ihre Nachbarin.</p>
+
+        <p>„Bei einer Ausbildung arbeitest du und lernst du zusammen“, erklärte Roya. „Du verdienst Geld, und du lernst einen <b>Beruf</b>. Und mein Beruf ist klar: Ich möchte <b>Physiotherapeutin</b> werden.“</p>
+
+        <p>„Was macht eine Physiotherapeutin?“, fragte die Nachbarin.</p>
+
+        <p>„Eine Physiotherapeutin hilft <b>Menschen</b>“, sagte Roya. „Manche Menschen haben Schmerzen, zum Beispiel im Rücken oder im Knie. Dann zeige ich <b>Übungen</b>, und wir üben zusammen. Nach der Therapie können die Menschen besser laufen, besser stehen und besser schlafen.“</p>
+
+        <p>„Das ist ein sehr schöner Beruf“, sagte die Nachbarin. „Und du hast gute Hände, Roya.“</p>
+
+        <div class="orn">✎ ✎ ✎</div>
+
+        <p>Roya lernte drei Jahre, jeden einzelnen Tag. Sie las dicke Bücher über den <b>Körper</b>: Muskeln, Knochen, Herz und Atem. Ihre Hände kannten schon harte Arbeit — in ihrem alten Salon hatten sie so oft gekämmt und geschnitten. Jetzt lernten sie Massage und praktische Übungen. Sie stand sehr früh auf, und am Abend war sie immer müde. Ihr Kopf war dann voll mit neuen Wörtern.</p>
+
+        <p>Aber jeden Abend, wenn Roya müde war, knackte sie eine Walnuss und aß sie langsam. Tük, tük. Und sie dachte: <i>„Mein Traum ist stärker als meine Müdigkeit.“</i></p>
+
+        <p>Monat für Monat wurden ihre Hände besser. Die Menschen in der Praxis sagten: „Bei Roya tun die Übungen gut. Sie ist so süß und so hübsch — fast wie eine Prinzessin! Und ihre Hände haben Magie.“</p>
+
+        <p>Dann kam der große Tag: die <b>Prüfung</b>. Roya war ruhig. Sie zeigte alles, was sie konnte. Die Prüferin lächelte und sagte: „Sehr gut!“</p>
+
+        <p>Roya hatte <b>Erfolg</b>!</p>
+
+        <p>Am Abend aß Roya zehn Walnüsse auf einmal. Zehn! Das war ihr Fest.</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 6</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>die Ausbildung</b> <span class="fa" lang="fa">آموزش حرفه‌ای</span></li>
+          <li><b>der Beruf</b> <span class="fa" lang="fa">شغل</span></li>
+          <li><b>die Physiotherapeutin</b> <span class="fa" lang="fa">فیزیوتراپیست</span></li>
+          <li><b>helfen</b> <span class="fa" lang="fa">کمک کردن</span></li>
+          <li><b>der Körper</b> <span class="fa" lang="fa">بدن</span></li>
+          <li><b>die Prüfung</b> <span class="fa" lang="fa">امتحان</span></li>
+          <li><b>der Erfolg</b> <span class="fa" lang="fa">موفقیت</span></li>
+          <li><b>verdienen</b> <span class="fa" lang="fa">پول درآوردن</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 6 · Kapitel 6 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k5">← Kapitel 5</a>
+        <a class="btn" href="#k7">Weiter zu Kapitel 7 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 7 · DAS HAUS AM FLUSS ==================== -->
+<section class="ch ch6" id="k7">
+  <div class="sun"></div>
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 7 · Seite 7</span>
+      <h2 class="title">Das Haus am Fluss</h2>
+      <p class="subtitle">Ein Garten wie ein Wald, ein Baum wie ein Freund — und acht Pfoten, nein: viel mehr.</p>
+
+      <div class="story">
+        <p class="first">Nach der Prüfung öffnete Roya eine eigene <b>Praxis</b> für Physiotherapie. Viele Menschen kamen jeden Tag zu Roya. Ihre Hände waren gut, ihre Worte waren warm, und ihr Herz war sehr groß. Roya arbeitete viel, und Roya war jetzt sehr <b>erfolgreich</b>. Sie verdiente viel <b>Geld</b> — mehr Geld, als sie je in ihrem alten Leben gesehen hatte.</p>
+
+        <p>Denn Geld kam nicht für sich allein: Roya hatte gearbeitet wie eine Löwin, drei Jahre lang, Tag für Tag. Jetzt konnte sie einen neuen Traum kaufen:</p>
+
+        <p>Ein Haus! Ein großes Haus!</p>
+
+        <p>Das Haus hatte viele Zimmer, große helle Fenster und einen riesigen <b>Garten</b>. Der Garten war wie ein kleiner Wald: grüne Wiese, bunte Blumen, hohe alte Bäume. Und mitten im Garten stand ein alter <b>Walnussbaum</b>!</p>
+
+        <p>Roya lachte laut: „Mein Lieblingsbaum wohnt jetzt bei mir!“</p>
+
+        <div class="orn">✿ ✿ ✿</div>
+
+        <p>Und dann kamen die Hunde. Roya ging ins <b>Tierheim</b> und brachte sieben kleine Hunde mit nach Hause. Die Hunde waren klein, süß und sehr laut. Ihre Namen waren: <b>Nuss, Keks, Sonne, Stern, Honig, Wind und Frieden</b>.</p>
+
+        <p>Nach einer Woche kam noch ein Freund dazu: <b>Bär</b>. Bär war ein sehr großer, sehr lieber Hund, braun und stark und immer gut gelaunt. Die sieben kleinen Hunde liebten Bär — er war wie ein großer, sanfter Bruder für sie alle.</p>
+
+        <p>Royas Haus lag ganz nah an einem <b>Fluss</b>. Jeden Abend gingen Roya und ihre acht Hunde zum Fluss. Roya saß auf einem großen Stein am <b>Ufer</b>. Ihre grünen Augen schauten auf das Wasser — das Wasser tanzte hell in der Abendsonne. Bär saß direkt neben ihr, und die kleinen Hunde jagten <b>Schmetterlinge</b> im Gras.</p>
+
+        <p>Roya zählte leise auf: „Ich habe Arbeit, Geld, ein Haus, einen Garten, einen Fluss, einen Walnussbaum … was fehlt mir noch?“ Dann lächelte sie: „Ein Traum fehlt noch …“</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 7</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>die Praxis</b> <span class="fa" lang="fa">مطب</span></li>
+          <li><b>das Tierheim</b> <span class="fa" lang="fa">پناهگاه حیوانات</span></li>
+          <li><b>der Walnussbaum</b> <span class="fa" lang="fa">درخت گردو</span></li>
+          <li><b>der Hund</b> <span class="fa" lang="fa">سگ</span></li>
+          <li><b>der Fluss</b> <span class="fa" lang="fa">رودخانه</span></li>
+          <li><b>der Schmetterling</b> <span class="fa" lang="fa">پروانه</span></li>
+          <li><b>das Ufer</b> <span class="fa" lang="fa">ساحل</span></li>
+          <li><b>das Wasser</b> <span class="fa" lang="fa">آب</span></li>
+          <li><b>erfolgreich</b> <span class="fa" lang="fa">موفق</span></li>
+          <li><b>das Geld</b> <span class="fa" lang="fa">پول</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 7 · Kapitel 7 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k6">← Kapitel 6</a>
+        <a class="btn" href="#k8">Weiter zu Kapitel 8 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 8 · DER HÜBSCHE SEE ==================== -->
+<section class="ch ch7" id="k8">
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 8 · Seite 8</span>
+      <h2 class="title">Der hübsche See</h2>
+      <p class="subtitle">Vom letzten Traum — und davon, wie ein Leben zu einem Glück wird.</p>
+
+      <div class="story">
+        <p class="first">Der letzte Traum war nicht weit: ein <b>See</b>.</p>
+
+        <p>Nur eine kurze Fahrt mit dem Bus entfernt lag ein sehr hübscher See. Das Wasser war klar und ruhig, und rund um den See standen hohe grüne Bäume. Ein kleiner Weg ging langsam am Wasser entlang, und weiße <b>Enten</b> schwammen ohne Eile über den See.</p>
+
+        <p>Jeden Sonntag war See-Tag. Roya packte eine große Tasche: eine Decke, Brot, Käse, Äpfel und eine große Schale mit Walnüssen. Bär lief gemächlich neben ihr, und die sieben kleinen Hunde tanzten um ihre Füße wie ein kleiner Karneval.</p>
+
+        <p>Am See machten sie ein <b>Picknick</b> auf der Wiese. Roya knackte Walnüsse — tük, tük — und Bär saß ganz dicht neben ihr und wartete <b>geduldig</b> wie ein echter Ritter. Er liebte Walnüsse genauso wie Roya.</p>
+
+        <p>Dann schwamm Bär im See: langsam und ruhig, wie ein großes braunes Schiff. Die kleinen Hunde blieben am Ufer und bellten sehr laut: „Wuff! Wuff!“ Roya lachte und lachte, bis der ganze See mitlachte.</p>
+
+        <div class="orn">〜 〜 〜</div>
+
+        <p>Danach saß Roya lange, lange still. Sie schaute auf das Wasser, auf die Sonne, auf die Vögel. Sie atmete tief.</p>
+
+        <p>Sie dachte kurz an ihre alte <b>Heimat</b> und an die ersten, schweren Tage in Deutschland — und lächelte. Das Schwerste war vorbei. Hier war sie jetzt sicher <i>und</i> frei. Hier hatte sie eine gute Ausbildung, viel Geld und eine volle Praxis. Hier hatte sie ein großes Haus mit einem riesigen Garten und einem Walnussbaum, einen hellen Fluss, einen hübschen See und acht liebe Freunde mit vier Beinen.</p>
+
+        <p>Alle ihre Wünsche und alle ihre <b>Bedürfnisse</b> waren <b>erfüllt</b>.</p>
+
+        <p>Roya schloss die Augen und lächelte: „Das Leben ist schön. Ich liebe mein Leben, jeden Tag.“</p>
+
+        <div class="quote" style="font-family:'Caveat',cursive;font-size:1.9rem;color:#1f7fb8;text-align:center;margin:1.6rem 0 .2rem">
+          Frei sein und glücklich sein — das ist Royas Leben.<br>
+          <span class="fa" lang="fa" style="font-size:1.4rem">آزاد بودن و خوشبخت بودن — این زندگی رویاست.</span>
+        </div>
+
+        <p>Aber manchmal, wenn es am See sehr still wurde, dachte Roya an die <b>Frauen</b> aus ihrem alten Salon — an ihre Schere, die dort noch jeden Tag arbeitete. „Ich muss ihnen schreiben“, sagte Roya leise. „Sie müssen wissen: Alles ist gut geworden.“</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 8</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>der See</b> <span class="fa" lang="fa">دریاچه</span></li>
+          <li><b>die Ente</b> <span class="fa" lang="fa">اردک</span></li>
+          <li><b>das Picknick</b> <span class="fa" lang="fa">پیکنیک</span></li>
+          <li><b>geduldig</b> <span class="fa" lang="fa">صبور</span></li>
+          <li><b>schwimmen</b> <span class="fa" lang="fa">شنا کردن</span></li>
+          <li><b>das Bedürfnis</b> <span class="fa" lang="fa">نیاز</span></li>
+          <li><b>erfüllt</b> <span class="fa" lang="fa">برآورده‌شده</span></li>
+          <li><b>sicher</b> <span class="fa" lang="fa">در امنیت</span></li>
+          <li><b>das Leben</b> <span class="fa" lang="fa">زندگی</span></li>
+          <li><b>die Freiheit</b> <span class="fa" lang="fa">آزادی</span></li>
+        </ul>
+      </div>
+
+      <div class="wavebar">〰〰〰〰〰〰〰〰〰〰</div>
+
+      <div class="pagenum">— Seite 8 · Kapitel 8 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k7">← Kapitel 7</a>
+        <a class="btn" href="#k9">Weiter zu Kapitel 9 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 9 · DER BRIEF NACH HAUSE ==================== -->
+<section class="ch ch8" id="k9">
+  <div class="inner">
+    <div class="card">
+      <div class="seal">♥</div>
+      <span class="chip">Kapitel 9 · Seite 9</span>
+      <h2 class="title">Der Brief nach Hause</h2>
+      <p class="subtitle">Von der Post, einem Foto — und einer Antwort, die Mut macht.</p>
+
+      <div class="story">
+        <p class="first">Am See war es jetzt Sommer. Die Sonne war warm, die Enten hatten kleine gelbe Entenkinder, und die Walnüsse am Baum wurden groß und rund. In dieser stillen Zeit dachte Roya oft an die <b>Frauen</b> aus ihrem alten Salon — so <b>weit</b> weg, in der alten <b>Heimat</b>.</p>
+
+        <p>„Ich <b>schreibe</b> ihnen einen <b>Brief</b>“, sagte Roya eines Abends zu Bär. Bär wedelte mit dem Schwanz. Roya nahm Papier und einen Stift und schrieb:</p>
+
+        <div class="letter">
+          Liebe Frauen,<br><br>
+          wie geht es euch? Ich bin gut — nein, ich bin glücklich! Ich habe hier in Deutschland eine Ausbildung gemacht und bin jetzt Physiotherapeutin. Wisst ihr, wie das kam? Ich habe Volleyball gespielt und mir den Zeh verletzt. Eine Physiotherapeutin hat mir geholfen — mit Händen, mit Übungen und mit Geduld. Da wusste ich: Das will ich auch!<br><br>
+          Ich habe ein Haus mit einem Garten, einem Walnussbaum, einem Fluss und einem See. Und acht Hunde — sieben kleine und einen sehr großen. Sein Name ist Bär.<br><br>
+          Ich schicke euch ein <b>Foto</b> von uns allen. Ich danke euch für alles.<br><br>
+          Eure Roya
+        </div>
+
+        <p>Roya legte das Foto in den Brief, ging zur <b>Post</b> und schickte ihn in die alte Heimat. Der Brief flog mit einem Flugzeug über Berge und Meere.</p>
+
+        <div class="orn">♥ ♥ ♥</div>
+
+        <p>Nach vier Wochen kam die Antwort: ein Brief mit schönen alten <b>Briefmarken</b>. Roya öffnete ihn sofort und las:</p>
+
+        <div class="letter">
+          Liebe Roya,<br><br>
+          dein Brief hat uns alle so glücklich gemacht! Wir haben ihn laut im Salon vorgelesen — alle zusammen — und geklatscht. Dein Foto von Bär hängt jetzt bei uns an der Wand.<br><br>
+          Deine Schere steht noch immer bei uns. Wir schneiden jeden Tag weiter — und wir träumen mit dir: Eines Tages sind auch bei uns alle Türen offen.<br><br>
+          Bleib so glücklich wie heute!<br><br>
+          Eure Frauen
+        </div>
+
+        <p>Roya las den Brief dreimal. Dann schaute sie zu Bär und sagte: „Weißt du, was wir machen, Bär? Wir bauen einen besonderen Ort — für Frauen. Für alle Frauen.“</p>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 9</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>die Frauen</b> <span class="fa" lang="fa">زنان</span></li>
+          <li><b>der Brief</b> <span class="fa" lang="fa">نامه</span></li>
+          <li><b>die Post</b> <span class="fa" lang="fa">پست</span></li>
+          <li><b>schreiben</b> <span class="fa" lang="fa">نوشتن</span></li>
+          <li><b>das Foto</b> <span class="fa" lang="fa">عکس</span></li>
+          <li><b>die Briefmarke</b> <span class="fa" lang="fa">تمبر</span></li>
+          <li><b>danken</b> <span class="fa" lang="fa">تشکر کردن</span></li>
+          <li><b>weit</b> <span class="fa" lang="fa">دور</span></li>
+          <li><b>der Sommer</b> <span class="fa" lang="fa">تابستان</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 9 · Kapitel 9 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k8">← Kapitel 8</a>
+        <a class="btn" href="#k10">Weiter zu Kapitel 10 →</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== KAPITEL 10 · DER OFFENE SALON ==================== -->
+<section class="ch ch9" id="k10">
+  <div class="inner">
+    <div class="card">
+      <span class="chip">Kapitel 10 · Seite 10</span>
+      <h2 class="title">Der offene Salon</h2>
+      <p class="subtitle">Ein Ort für alle Frauen — und der schönste Sommer von allem.</p>
+
+      <div class="story">
+        <p class="first">Ein Jahr später baute Roya an ihr Haus einen großen, hellen Raum an: mit Spiegeln, weichen Stühlen und Liegen. Am Anfang des Sommers war er fertig. Über der Tür hing ein <b>Schild</b>, und darauf stand: „Der offene Salon — für alle Frauen.“</p>
+
+        <p>Jeden Tag <b>öffneten</b> Roya und Bär die <b>Türen</b> — ganz weit. Frauen kamen aus der Stadt und von weit weg: Frauen, die wie Roya in einem neuen Land angekommen waren und noch nicht viel Deutsch sprachen. Roya schnitt ihnen die Haare mit einer neuen, sehr guten <b>Schere</b>, und wenn jemand kein Geld hatte, war es umsonst. Und wenn jemand Schmerzen hatte, zeigte sie Übungen — für <b>starke</b> Rücken und glückliche Knie. Dann tranken alle <b>gemeinsam</b> Tee, aßen Walnüsse und lachten — <b>laut</b>! So laut, wie es in Royas altem Leben verboten war.</p>
+
+        <p>Am Wochenende spielten die Frauen <b>Volleyball</b> im Garten. Der Ball flog hoch, Roya sprang — und sie schaute kurz auf ihren großen Zeh: Er war zum Glück wieder ganz gesund.</p>
+
+        <div class="orn">✶ ✶ ✶</div>
+
+        <p>Und dann kam der schönste Sommer: Eines Tages kam eine <b>Frau</b> in den Salon — von weit her, aus Royas alter Heimat. Sie öffnete ihre Tasche, und darin lag Royas alte <b>Schere</b>. „Die Frauen schicken sie dir“, sagte die Frau. „Sie sagen: Schneide weiter — aber jetzt offen, im Licht.“ Roya hielt die Schere ganz fest und lächelte: „Danke. Jetzt ist sie endlich wieder bei mir.“</p>
+
+        <p>Am Sonntag fuhren viele zum <b>See</b>: Roya, Bär, die sieben kleinen Hunde — und viele Frauen aus dem Salon. Sie machten Picknick auf der Wiese. Roya brachte eine große Schale mit Walnüssen mit, und alle aßen und lachten laut — kein Mensch auf der Welt konnte ihnen das verbieten.</p>
+
+        <p>Spät an einem Abend saß Roya noch lange im hellen Salon, als alle Gäste schon zu Hause waren. Eine junge Frau drehte sich an der Tür noch einmal um und fragte: „Warum sind deine Türen immer offen?“ Roya überlegte kurz und sagte:</p>
+
+        <div class="moral">Denn Freiheit ist wie ein Traum:<br> sie wird größer, wenn man sie teilt.</div>
+
+        <p>Und in jedem Brief nach Hause schreibt Roya bis heute denselben Satz: „Eines Tages sehen wir uns wieder — und dann lachen wir laut, in einem freien Land.“</p>
+
+        <p><i>Und wenn sie nicht gestorben sind, dann leben und lachen sie noch heute: Roya, Bär und die sieben kleinen Hunde — in einem Haus, wo alle Türen offen sind.</i></p>
+
+        <div style="text-align:center"><span class="ende">ENDE</span></div>
+      </div>
+
+      <div class="vocab">
+        <div class="vt"><span>Wortschatz · Kapitel 10</span><span class="fa" lang="fa">واژه‌نامه</span></div>
+        <ul>
+          <li><b>öffnen</b> <span class="fa" lang="fa">باز کردن</span></li>
+          <li><b>die Tür</b> <span class="fa" lang="fa">در</span></li>
+          <li><b>gemeinsam</b> <span class="fa" lang="fa">با هم</span></li>
+          <li><b>laut</b> <span class="fa" lang="fa">بلند</span></li>
+          <li><b>lachen</b> <span class="fa" lang="fa">خندیدن</span></li>
+          <li><b>stark</b> <span class="fa" lang="fa">قوی</span></li>
+          <li><b>teilen</b> <span class="fa" lang="fa">قسمت کردن</span></li>
+          <li><b>der Gast</b> <span class="fa" lang="fa">مهمان</span></li>
+          <li><b>die Schere</b> <span class="fa" lang="fa">قیچی</span></li>
+        </ul>
+      </div>
+
+      <div class="pagenum">— Seite 10 · Kapitel 10 —</div>
+      <nav class="nav">
+        <a class="btn" href="#k9">← Kapitel 9</a>
+        <a class="btn" href="#top">↑ Zum Anfang</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="endpage">
+  <div class="inner">
+    <p class="l1">Geschrieben mit viel Liebe für Roya ♥</p>
+    <p>fuck you, idiot</p>
+  </div>
+</footer>
+
+</body>
+</html>
